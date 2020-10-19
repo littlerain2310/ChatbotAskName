@@ -1,0 +1,48 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- bot_challenge
+- give_name
+- chitchat
+- EXTERNAL_reminder:
+    triggers: action_inactivity_scheduler
+- EXTERNAL_reminder_02:
+    triggers: action_inactivity_scheduler
+- EXTERNAL_second:
+    triggers: action_turn_off
+- EXTERNAL_last:
+    triggers: action_inactivity_scheduler_final
+entities:
+- name1
+slots:
+  name1:
+    type: text
+    auto_fill: false
+  user_confirm:
+    type: bool
+    auto_fill: false
+responses:
+  utter_ask_name1:
+  - text: Chào bạn tên bạn là gì ?
+  utter_bye:
+  - text: Tạm biệt
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_chitchat:
+  - text: Xin vui lòng cung cấp đúng thông tin được hỏi để chúng tôi hỗ trỡ tốt nhất
+  utter_default:
+  - text: Hệ thống không thể nhận ra thông tin bạn cung cấp.Bạn vui lòng nhập lại
+      thông tin. Xin cảm ơn
+  utter_ask_user_confirm:
+  - text: Hệ thống ghi nhận tên của bạn là {name1}.Bạn có xác nhận không ?
+actions:
+- action_inactivity_scheduler
+- action_inactivity_scheduler_final
+- action_turn_off
+forms:
+- ask_name_form
